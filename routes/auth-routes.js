@@ -8,9 +8,9 @@ router.get(
       try {
         let obj = {};
         const response = await axios.get(req.query.str)
-        const html = await response.data;
-        if (html.length > 8000) {
-          html.length = 8000;
+        let html = await response.data;
+        if (html.length > 30000) {
+          html = html.slice(0, 30000)
         }
         html.toLowerCase().split('').forEach((item) => {
           if (item in obj) {
