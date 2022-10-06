@@ -8,7 +8,8 @@ router.get(
       try {
         const response = await axios.get(req.query.str)
         const html = await response.data;
-        res.status(200).send(html);
+        const splittedHtml = html.split('');
+        res.status(200).json({ html: splittedHtml });
       } catch {
         res.status(404).send('Error');
       }
