@@ -9,6 +9,7 @@ router.get(
         let obj = {};
         const response = await axios.get(req.query.str)
         const html = await response.data;
+        html.length = 8000;
         html.toLowerCase().split('').forEach((item) => {
           if (item in obj) {
             obj = { ...obj, [item]: obj[item] + 1 };
